@@ -1,0 +1,35 @@
+
+
+<owl-carousel-o [options]="{items: 0, dots: false}"
+                (translated)="getPassedData($event)"
+                (dragging)="startDragging($event.dragging)"
+                (initialized)="getData($event)"
+                (change)="getData($event)"
+                (changed)="getData($event)"
+>
+
+<!--  <ng-template carouselSlide *ngFor="let slide of slidesStore" [id]="slide.id">-->
+<!--    <img [src]="slide.src" [alt]="slide.alt" [title]="slide.title">-->
+<!--  </ng-template>-->
+
+  <ng-container *ngFor="let product of products">
+    <ng-template carouselSlide >
+      <div class="product-item">
+        <div class="product-item-content">
+          <div >
+            <div class="text-right mt-2">
+              {{ngxNumToWordsService.inWords(products.indexOf(product)+1, lang)}} of {{ngxNumToWordsService.inWords(products.length, lang)}}
+<!--              {{products.indexOf(product)+1}}/{{products.length}}-->
+            </div>
+            <div class="text-justify" id="description">
+              {{product.description}}
+            </div>
+            <div class="text-right mt-2">
+              <p-chip styleClass="p-chips" label="{{product.wisher}}" [image]="getAvatar(product)" [removable]="false"></p-chip>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ng-container>
+</owl-carousel-o>

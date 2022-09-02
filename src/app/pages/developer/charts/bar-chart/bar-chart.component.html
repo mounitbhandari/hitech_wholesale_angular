@@ -1,0 +1,30 @@
+<div class="content-section introduction">
+  <div class="feature-intro">
+    <h1>BarChart</h1>
+    <p>A bar chart or bar graph is a chart that presents Grouped data with rectangular bars with lengths proportional to the values that they represent.</p>
+  </div>
+</div>
+
+<div class="content-section implementation">
+  <div class="card">
+    <h5>Vertical</h5>
+    <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+  </div>
+
+  <div class="card">
+    <h5>Horizontal</h5>
+    <p-chart type="bar" [data]="basicData" [options]="horizontalOptions"></p-chart>
+  </div>
+
+  <div class="card">
+    <h5>Multi Axis</h5>
+    <p-chart type="bar" [data]="multiAxisData" [options]="multiAxisOptions"></p-chart>
+  </div>
+
+  <div class="card">
+    <h5>Stacked</h5>
+    <p-chart type="bar" [data]="stackedData" [options]="stackedOptions"></p-chart>
+  </div>
+</div>
+
+

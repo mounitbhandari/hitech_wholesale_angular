@@ -1,0 +1,138 @@
+<mat-tab-group class="align-center">
+  <mat-tab label="Description" class="align-center">
+    <div class="d-flex flex-row bd-highlight mb-3 justify-content-center">
+      <div class="p-2 bd-highlight align-center">
+        <div class="card" style="background-color: #d9d8d8;" data-aos="fade-right" data-aos-duration="3000">
+          <div class="card-body">
+
+            <p-slider [(ngModel)]="fontSize" [matBadge]="fontSize" matBadgeOverlap="false"></p-slider>
+            <hr>
+            <p class="card-text text-black" [style.font-size.px]="fontSize" #para>
+              This sequential circuit contains a set of inputs and outputs. The outputs of sequential circuit depends not only on the combination of present inputs but also on the previous outputs. Previous output is nothing but the present state. Therefore, sequential circuits contain combinational circuits along with memory storage elements.
+            </p>
+            https://www.tutorialspoint.com/digital_circuits/digital_circuits_sequential_circuits.htm
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th scope="col">Combinational Circuits</th>
+                <th scope="col">Sequential Circuits</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Outputs depend only on present inputs.</td>
+                <td>Outputs depend on both present inputs and present state.</td>
+              </tr>
+               <tr>
+                <td>Feedback path is not present.</td>
+                <td>Feedback path is present.</td>
+              </tr>
+              <tr>
+                <td>Memory elements are not required.</td>
+                <td>Memory elements are required.</td>
+              </tr>
+              <tr>
+                <td>Clock signal is not required.</td>
+                <td>Clock signal is required.</td>
+              </tr>
+              <tr>
+                <td>Easy to design.</td>
+                <td>Difficult to design.</td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card" style="background-color: #d9d8d8;" data-aos="fade-left" data-aos-duration="4000">
+          <div class="card-body  text-black">
+            <div class="d-flex flex-row bd-highlight mb-3 justify-content-left">
+              <div>
+                <div>
+                <h2>Types of Sequential Circuits</h2>
+
+                  <div class="p-field-radiobutton">
+                    <p-radioButton name="city" value="asc" [(ngModel)]="circuitType" inputId="city1"></p-radioButton>
+                    <label for="city1"> Asynchronous sequential circuits</label>
+                  </div>
+                  <div class="p-field-radiobutton">
+                    <p-radioButton name="city" value="sc" [(ngModel)]="circuitType" inputId="city2"></p-radioButton>
+                    <label for="city2"> Synchronous sequential circuits</label>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex flex-row bd-highlight m-3 justify-content-center">
+                <app-asynchronous-sequential-circuits *ngIf="circuitType==='asc'"></app-asynchronous-sequential-circuits>
+                <app-synchronous-sequential-circuits *ngIf="circuitType==='sc'"></app-synchronous-sequential-circuits>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="p-2 bd-highlight align-center">
+        <div class="card" style="background-color: #d9d8d8;" data-aos="fade-right" data-aos-duration="3000">
+          <div class="card-body">
+            <p class="card-text text-black">
+              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </mat-tab>
+  <mat-tab label="NAND Based" class="align-center">
+    <div class="d-flex flex-row bd-highlight mb-3 justify-content-center">
+      <div class="p-2 bd-highlight align-center">
+        <p-toggleButton onLabel="Show Blank"
+                        offLabel="Show Solved"
+                        onIcon="pi pi-check"
+                        offIcon="pi pi-times"
+                        [(ngModel)]="checked">
+        </p-toggleButton>
+        <div class="card" style="background-color: #d9d8d8;" data-aos="fade-right" data-aos-duration="3000">
+          <img src="assets/tutorial/flipflop/siple_nand_based_sr_flipflop.svg" style="margin-left: 10px; width: 20vw;" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text text-black">
+              Flip Flop is a memory element which is capable of storing one bit of information and it is used in clocked sequential circuits.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 bd-highlight">
+        <p-toggleButton onLabel="Show Blank"
+                        offLabel="Show Solved"
+                        onIcon="pi pi-check"
+                        offIcon="pi pi-times"
+                        [(ngModel)]="checked">
+        </p-toggleButton>
+        <div *ngIf="!checked" class="card" style="background-color: #d9d8d8;"  data-aos="fade-left" data-aos-duration="3000">
+          <img src="assets/tutorial/flipflop/Characteristic-Table-Simple-Flip-Flop.svg" style="margin-left: 10px; width: 31vw;" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text text-black">
+              Flip Flop is a memory element which is capable of storing one bit of information and it is used in clocked sequential circuits.
+            </p>
+          </div>
+        </div>
+        <div *ngIf="checked" class="card" style="background-color: #d9d8d8;"  data-aos="fade-left" data-aos-duration="3000">
+          <img src="assets/tutorial/flipflop/Characteristic-Table-Simple-Flip-Flop-Solved.svg" style="margin-left: 10px; width: 31vw;" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text text-black">
+              Flip Flop is a memory element which is capable of storing one bit of information and it is used in clocked sequential circuits.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="NOR Based Flip Flop" class="align-center">
+        <app-nor-based-flip-flop></app-nor-based-flip-flop>
+  </mat-tab>
+  <mat-tab label="J-K Flip Flop" class="align-center">
+    <app-nor-based-jkflip-flop></app-nor-based-jkflip-flop>
+  </mat-tab>
+</mat-tab-group>
+
+

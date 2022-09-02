@@ -1,0 +1,217 @@
+
+<div class="d-flex flex-row bd-highlight mb-3" style="height: 200vh;">
+    <div class="p-2 bd-highlight">
+        <div class="card">
+            <div class="card-header p-3 mt-2">
+                <p style="color: #1e293b; font-size: 36px;">Course Entry Form </p>
+
+            </div>
+            <div class="card-body">
+                <div>
+                    <mat-stepper [linear]="isLinear" class="course-form" #stepper>
+                        <mat-step [stepControl]="courseNameFormGroup" label="Name">
+                            <form [formGroup]="courseNameFormGroup">
+                                <div class="form-group">
+                                  <div class="p-2 col-8 bd-highlight">
+                                    <ng-select [items]="feeModeType"
+                                               fxFlex="100"
+                                               bindLabel="name"
+                                               class="custom"
+                                               bindValue="value"
+                                               appendTo="body"
+                                               formControlName="feesModeTypeId"
+                                               placeholder="Fees Mode">
+                                    </ng-select>
+                                  </div>
+                                  <div class="d-flex flex-row bd-highlight mb-3">
+
+
+                                    <div class="p-2 col-4 bd-highlight">
+                                      <mat-form-field style = "width:100%">
+                                        <mat-label>Course Code</mat-label>
+                                        <input matInput formControlName="courseCode" placeholder="C0001" required>
+                                      </mat-form-field>
+                                  </div>
+                                    <div class="p-2 col-8 bd-highlight">
+                                      <mat-form-field style = "width:100%">
+                                        <mat-label>Short Name</mat-label>
+                                        <input matInput formControlName="shortName" placeholder="Short Name" required>
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+
+                                    <mat-form-field class="col-12">
+                                      <input matInput placeholder="Course Full Name"  formControlName="fullName">
+                                      <div *ngIf="courseNameFormGroup.controls['fullName'].errors && courseNameFormGroup.controls['fullName'].touched" >
+                                        <mat-error class="text-right" *ngIf="courseNameFormGroup.controls['fullName'].errors['required']">Course Name is required</mat-error>
+                                      </div>
+                                    </mat-form-field>
+                                  </div>
+                                  <div class="form-group" *ngIf = "hiddenInput">
+                                    <mat-form-field class="col-12">
+                                      <input matInput placeholder="Course ID" formControlName="courseId" >
+                                    </mat-form-field>
+
+                                  </div>
+<!-- Address -->
+                                  <div class="form-group">
+                                    <div class="d-flex flex-row bd-highlight mb-3" >
+                                      <div class="p-2 col-8 bd-highlight">
+                                          <mat-form-field style = "width:100%">
+                                            <mat-label>Duration:</mat-label>
+                                            <input matInput formControlName="courseDuration" placeholder="100" required>
+                                          </mat-form-field>
+                                      </div>
+
+
+                                        <div class="p-2 col-4 bd-highlight" style="height:40%">
+                                          <ng-select  [items]="durationTypes"
+                                                      bindLabel="durationName"
+                                                      class="custom"
+                                                      bindValue="durationTypeId"
+                                                      formControlName="durationTypeId"
+                                                      autofocus
+                                                      appendTo="body"
+                                                      placeholder="Duration Type">
+                                          </ng-select>
+                                        </div>
+                                      </div>
+                                    </div>
+
+
+
+                                  <div class="form-group">
+                                    <h5>Description</h5>
+<!--                                    <p-editor formControlName="description" [style]="{'height':'120px'}">-->
+<!--                                      <ng-template pTemplate="header">-->
+<!--                                      <span class="ql-formats">-->
+<!--                                          <button type="button" class="ql-bold" aria-label="Bold"></button>-->
+<!--                                          <button type="button" class="ql-italic" aria-label="Italic"></button>-->
+<!--                                          <button type="button" class="ql-underline" aria-label="Underline"></button>-->
+<!--                                      </span>-->
+<!--                                      </ng-template>-->
+<!--                                    </p-editor>-->
+
+                                    <textarea class="col-12" formControlName="description" [style]="{'height':'120px'}">
+
+                                    </textarea>
+
+                                  </div>
+                                  <div align="right">
+                                    <button pButton (click)="clearCourse()">
+                                      <i class="bi bi-clear" style="font-size: 1rem"> Clear </i>
+                                    </button>&nbsp;&nbsp;&nbsp;
+
+                                    <button pButton (click)="saveCourse()" *ngIf="!isShown">
+                                      <i class="bi bi-save" style="font-size: 1rem"> Save </i>
+                                    </button>
+
+                                    <button pButton (click)="updateCourse()" *ngIf="isShown">
+                                      <i class="bi bi-save" style="font-size: 1rem"> Update </i>
+                                    </button>
+                                  </div>
+                            </form>
+                        </mat-step>
+
+                    </mat-stepper>
+
+                    <p-confirmDialog #cd [style]="{width: '30vw'}" header="Confirmation" icon="pi pi-exclamation-triangle" [transitionOptions]="'0.8ms'">
+                      <ng-template pTemplate="header">
+                        <h3>Header Content</h3>
+                      </ng-template>
+                      <ng-template pTemplate="footer">
+                        <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+                        <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+                      </ng-template>
+                    </p-confirmDialog>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  Right-->
+  <div class="p-2 bd-highlight">
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex bd-highlight mb-3">
+                <div class="p-2 bd-highlight">
+                  </div>
+                  <div class="p-2 bd-highlight">
+                    <h3 style="color: #1e293b;">Course Details</h3>
+                    <p-table  #dt [value]="courses"
+                              selectionMode="multiple"
+                              [columns]="cols"
+                              [(selection)]="selectedCourses"
+                              dataKey="courseId"
+                              [paginator]="true"
+                              [rows]="5"
+                              [showCurrentPageReport]="true"
+                              [loading]="loading"
+                              responsiveLayout="scroll"
+                              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                              [rowsPerPageOptions]="[5,10,25,50]"
+                              styleClass="p-datatable-striped"
+                              [globalFilterFields]="['courseId','courseCode','shortName','fullName']">
+                      <ng-template pTemplate="caption">
+                        <div class="flex">
+<!--                          <button type="button" pButton pRipple icon="pi pi-file" (click)="dt.exportCSV()" class="mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>-->
+
+<!--                          <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>-->
+<!--                          <button type="button" pButton pRipple icon="pi pi-filter" (click)="dt.exportCSV({selectionOnly:true})" class="p-button-info ml-auto" pTooltip="Selection Only" tooltipPosition="bottom"></button>-->
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="caption">
+                        <button type="button" pButton pRipple icon="pi pi-file" (click)="dt.exportCSV()" class="mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
+                        <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success mr-2"  pTooltip="XLS" tooltipPosition="bottom">Excel</button>
+<!--                        <button type="button" pButton pRipple icon="pi pi-filter" (click)="dt.exportCSV({selectionOnly:false})" class="p-button-info ml-auto" pTooltip="Selection Only" tooltipPosition="bottom"></button>-->
+                        <div class="flex">
+                          <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt)"></button>
+                          <span class="p-input-icon-left ml-auto">
+                          <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains', dt)" placeholder="Search keyword" />
+                            </span>
+                        </div>
+                      </ng-template>
+                       <ng-template pTemplate="header">
+                         <tr>
+                           <th>ID</th>
+                           <th pSortableColumn="courseCode">Code <p-sortIcon field="courseCode"></p-sortIcon></th>
+                           <th pSortableColumn="shortName">Short Name <p-sortIcon field="shortName"></p-sortIcon></th>
+                           <th pSortableColumn="fullName">Full Name <p-sortIcon field="fullName"></p-sortIcon></th>
+                           <th pSortableColumn="edit">Edit <p-sortIcon field="edit"></p-sortIcon></th>
+                           <th pSortableColumn="delete">Delete <p-sortIcon field="delete"></p-sortIcon></th>
+                         </tr>
+                       </ng-template>
+                       <ng-template pTemplate="body" let-course>
+                         <tr >
+                          <td>{{course.courseId}}</td>
+                           <td>{{course.courseCode}}</td>
+                           <td>{{course.shortName}}</td>
+                           <td>{{course.fullName}}</td>
+
+                           <td>
+                             <p-button type="button"  icon="pi pi-pencil" (click)="editCourse(course)" styleClass="p-button-text"></p-button>
+                           </td>
+                           <td>
+                             <p-button type="button"  icon="pi pi-trash" (click)="deleteCourse(course)" styleClass="p-button-text"></p-button>
+                           </td>
+                         </tr>
+                       </ng-template>
+                       <ng-template pTemplate="paginatorleft">
+                         <p-button type="button" icon="pi pi-plus" styleClass="p-button-text" ></p-button>
+                       </ng-template>
+                    </p-table>
+                  </div>
+            </div>
+        </div>
+        <div class="card">
+            <h1>Student List</h1>
+            <div class="p-2 bd-highlight col-3" style="background-color: #e7e709;">
+              <pre>
+                courseData = {{courseData | json}}
+              </pre>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

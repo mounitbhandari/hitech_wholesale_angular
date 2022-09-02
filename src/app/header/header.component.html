@@ -1,0 +1,93 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="commonService.isHeaderVisible()">
+  <div class="container-fluid">
+    <button (click)="toggleSlidebar()" mat-icon-button ><mat-icon>menu</mat-icon></button>
+    <button *ngIf="authService.isAuthenticated()" mat-button class="rounded-circle" [matMenuTriggerFor]="test1">
+                <div class="rounded-circle" style="width: 56px; height: 55px; border: #e8c50e solid">
+                  <img  class="rounded-circle" style="width: 50px; height: 50px" [src]="imageSrc" (error)="imageSrc = defaultPicture">
+                </div>
+    </button>
+    <mat-menu #test1="matMenu">
+      <input type="file" (change)="onChange($event)" name="filename">
+    </mat-menu>
+    <div>{{authService.getUserName()}}</div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" >Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+    </div>
+    <!--    for login-->
+    <div *ngIf="authService.isNotAuthenticated()">
+      <a class="dropdown-item" [routerLink]="['/login']" style="color: dodgerblue;">
+        <mat-icon>power_settings_new</mat-icon>
+      </a>
+
+<!--      <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
+<!--        <li class="nav-item dropdown">-->
+<!--          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--            <mat-icon>power_settings_new</mat-icon>-->
+<!--          </a>-->
+<!--          <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">-->
+<!--            <li><a class="dropdown-item" [routerLink]="['/login']">-->
+<!--              <mat-icon aria-hidden="false">login</mat-icon> Login-->
+<!--            </a></li>-->
+
+<!--          </ul>-->
+<!--        </li>-->
+<!--      </ul>-->
+    </div>
+
+    <!--    for logout-->
+    <div *ngIf="authService.isAuthenticated()">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <mat-icon>power_settings_new</mat-icon>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+            <li>
+              <a class="dropdown-item" [routerLink]="" (click)="logOutCurrentUser()">
+                <fa-icon [icon]="faSignOutAlt"></fa-icon> Logout
+              </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" [routerLink]="" (click)="logOutFromAll()">
+              Logout All
+            </a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+<!--    <div>-->
+<!--      <form class="d-flex">-->
+<!--        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--        <button class="btn btn-outline-success" type="submit">Search</button>-->
+<!--      </form>-->
+<!--    </div>-->
+  </div>
+</nav>
+
+

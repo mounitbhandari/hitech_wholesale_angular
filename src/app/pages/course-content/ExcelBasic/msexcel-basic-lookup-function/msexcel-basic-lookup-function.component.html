@@ -1,0 +1,216 @@
+<!--<p-toast key="myKey1" [style]="{marginTop: '80px'}"></p-toast>-->
+
+
+<p-toast position="top-center" key="myKey1" (onClose)="onReject()" [baseZIndex]="5000">
+  <ng-template let-message pTemplate="message">
+    <div style="text-align: center">
+      <!-- <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i> -->
+      <h3>{{message.summary}}</h3>
+      <p>{{message.detail}}</p>
+    </div>
+    <!-- <div class="ui-g ui-fluid"> -->
+    <!-- <div class="ui-g-6"> -->
+    <!-- <button type="button" pButton (click)="onReject()" label="Close" class="ui-button-secondary"></button> -->
+    <!-- </div> -->
+    <!-- </div> -->
+  </ng-template>
+</p-toast>
+
+
+<div data-aos="fade-right">
+  <p-accordion (onOpen)="onTabOpen($event)">
+    <!--      Future value-->
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">VLOOKUP</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="text-body">
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Summary</h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">
+            VLOOKUP is an Excel function to ook up data in a table organized vertically. VLOOKUP supports approximate
+            and exact matching, and wildcards (* ?) for partial matches. Lookup values must appear in the first column
+            of the table passed into VLOOKUP.
+          </p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Purpose</h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">Lookup a value in a table by matching on the first column</p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Return value </h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">The matched value from a table.</p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Syntax</h2>
+            </div>
+          </p-divider>
+
+          <h3 class="function-prototype pl-4">
+            =
+            <span class="function-name">VLOOKUP</span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">lookup_value</span>,
+            <span class="required-parameter">table_array</span>,
+            <span class="required-parameter">column_index_num</span>,
+            [range_lookup]
+            <span class="bracket">)</span>
+          </h3>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Arguments </h2>
+            </div>
+          </p-divider>
+          <dl class="pl-4">
+            <dt>lookup_value </dt>
+            <dd>- The value to look for in the first column of a table.</dd>
+            <dt>table_array </dt>
+            <dd>- The table from which to retrieve a value.</dd>
+            <dt>column_index_num </dt>
+            <dd>- The column in the table from which to retrieve a value.</dd>
+            <dt>range_lookup</dt>
+            <dd>-[optional] TRUE = approximate match (default). FALSE = exact match.</dd>
+
+          </dl>
+        </div>
+      </ng-template>
+    </p-accordionTab>
+
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">MATCH</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="text-body">
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Summary</h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">
+            MATCH is an Excel function used to locate the position of a lookup value in a row, column, or table. MATCH
+            supports approximate and exact matching, and wildcards (* ?) for partial matches. Often, MATCH is combined
+            with the INDEX function to retrieve a value at a matched position.
+          </p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Purpose</h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">Get the position of an item in an array</p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Return value </h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">A number representing a position in lookup_array.</p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Syntax</h2>
+            </div>
+          </p-divider>
+
+          <h3 class="function-prototype pl-4">
+            =
+            <span class="function-name">MATCH</span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">lookup_value</span>,
+            <span class="required-parameter">lookup_array</span>,
+
+            [match_lookup]
+            <span class="bracket">)</span>
+          </h3>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Arguments </h2>
+            </div>
+          </p-divider>
+          <dl class="pl-4">
+            <dt>lookup_value </dt>
+            <dd>- The value to match in lookup_array.</dd>
+            <dt>lookup_array </dt>
+            <dd>- A range of cells or an array reference.</dd>
+            <dt>match_type - </dt>
+            <dd>- The column in the table from which to retrieve a value.</dd>
+            <dt>range_lookup</dt>
+            <dd>-[optional] TRUE = exact or next smallest (default), 0 = exact match, -1 = exact or next largest</dd>
+
+          </dl>
+        </div>
+      </ng-template>
+    </p-accordionTab>
+
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">INDEX</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="text-body">
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Summary</h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">
+            The Excel <span style="color: blue;" pTooltip="=INDEX (array, row_num, [col_num], [area_num])">INDEX</span> function returns the value at a given location in a range or array. You can use INDEX to retrieve individual values, or entire rows and columns. The MATCH function is often used together with INDEX to provide row and column numbers.
+          </p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Purpose</h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">Get a value in a list or table based on location</p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Return value </h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">The value at a given location.</p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Syntax</h2>
+            </div>
+          </p-divider>
+
+          <h3 class="function-prototype pl-4">
+            =
+            <span class="function-name">INDEX </span>
+            <span class="bracket">(</span>
+            <span class="required-parameter" pTooltip=" array=> A range of cells, or an array constant.">array</span>,
+            <span class="required-parameter"  pTooltip=" row_num=> The row position in the reference or array.">row_num</span>,
+            <span  pTooltip=" col_num=> [optional] The column position in the reference or array.">[col_num],</span>
+            <span  pTooltip=" area_num=> [optional] The range in reference that should be used."> [area_num]</span>
+            <span class="bracket">)</span>
+          </h3>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Arguments </h2>
+            </div>
+          </p-divider>
+          <dl class="pl-4">
+            <dt>array  </dt>
+            <dd>- A range of cells, or an array constant.</dd>
+            <dt>row_num  </dt>
+            <dd>- The row position in the reference or array.</dd>
+            <dt>col_num  - </dt>
+            <dd>- [optional] The column position in the reference or array.</dd>
+            <dt>area_num </dt>
+            <dd>-[optional] The range in reference that should be used.</dd>
+
+          </dl>
+        </div>
+      </ng-template>
+    </p-accordionTab>
+
+
+
+  </p-accordion>
+</div>

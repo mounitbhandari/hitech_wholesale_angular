@@ -1,0 +1,21 @@
+.filter-black{
+  //filter: invert(27%)  sepia(51%) saturate(2000%) hue-rotate(346deg) brightness(104%) contrast(97%);
+  filter: brightness(20%);
+  //filter: brightness(20%);
+  //filter: sepia(1) contrast(2) brightness(200%);
+  //filter: brightness(400%);
+}
+@keyframes haunted {
+  0% {
+    filter: brightness(20%);
+  }
+  48% {
+    filter: brightness(20%);
+  }
+  50% {
+    filter: sepia(1) contrast(2) brightness(200%);
+  }
+96% {
+    filter: brightness(400%);
+  }
+}

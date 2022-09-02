@@ -1,0 +1,36 @@
+<p-carousel [value]="products"  styleClass="custom-carousel" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+  <ng-template pTemplate="header">
+    <h2>Wishes from your nearest people</h2>
+  </ng-template>
+  <ng-template let-product pTemplate="item">
+    <div class="product-item">
+      <div class="product-item-content">
+        <div class="p-mb-3">
+        </div>
+        <div>
+
+          <div class="text-right mt-2">
+            {{products.indexOf(product)+1}}/{{products.length}}
+          </div>
+          <div class="text-justify align-middle" id="description">
+            {{product.description}}
+          </div>
+          <!-- <div>{{product.wisher}}</div> -->
+          <!-- <span [class]="'product-badge status-'+product.wisher.toLowerCase()">{{product.wisher}}</span> -->
+
+
+          <div class="text-right mt-2">
+            <p-chip label="{{product.wisher}}" [image]="getAvatar(product)" [removable]="false"></p-chip>
+          </div>
+
+
+          <!-- <div class="car-buttons p-mt-5">
+            <p-button type="button" styleClass="p-button p-button-rounded p-mr-2" icon="pi pi-search"></p-button>
+            <p-button type="button" styleClass="p-button-success p-button-rounded p-mr-2" icon="pi pi-star"></p-button>
+            <p-button type="button" styleClass="p-button-help p-button-rounded" icon="pi pi-cog"></p-button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>

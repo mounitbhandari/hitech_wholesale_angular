@@ -1,0 +1,426 @@
+<p-toast position="top-center" key="myKey1" (onClose)="onReject()" [baseZIndex]="5000">
+  <ng-template let-message pTemplate="message">
+    <div style="text-align: center">
+      <!-- <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i> -->
+      <h3>{{message.summary}}</h3>
+      <p>{{message.detail}}</p>
+    </div>
+    <!-- <div class="ui-g ui-fluid"> -->
+    <!-- <div class="ui-g-6"> -->
+    <!-- <button type="button" pButton (click)="onReject()" label="Close" class="ui-button-secondary"></button> -->
+    <!-- </div> -->
+    <!-- </div> -->
+  </ng-template>
+</p-toast>
+
+<div data-aos="fade-right">
+  <p-accordion (onOpen)="onTabOpen($event)">
+
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">CONCATENATE Function</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="text-body">
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Summary</h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">
+            The Excel CONCATENATE function concatenates (joins) join up to 30 values together and returns the result as
+            text. In Excel 2019 and later, the CONCAT and TEXTJOIN functions are better, more flexible alternatives.
+          </p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Purpose</h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">Join text together</p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Return value </h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">Text joined together.</p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Syntax</h2>
+            </div>
+          </p-divider>
+
+          <h3 class="function-prototype pl-4">
+            =
+            <span class="function-name">CONCATENATE</span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">text1</span>,
+            <span class="required-parameter">text2</span>,
+            [text3] ,
+            ..............
+            <span class="bracket">)</span>
+          </h3>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Arguments </h2>
+            </div>
+          </p-divider>
+          <dl class="pl-4">
+            <dt>text1 </dt>
+            <dd>-The first text value to join together.</dd>
+            <dt>text2</dt>
+            <dd>-The second text value to join together.</dd>
+            <dt>text3 </dt>
+            <dd>- [optional] The third text value to join together.</dd>
+
+          </dl>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Examples </h2>
+            </div>
+          </p-divider>
+
+
+        </div>
+      </ng-template>
+    </p-accordionTab>
+
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">SUM Function</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="text-body">
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Summary</h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">
+            The Excel SUM function returns the sum of values supplied. These values can be numbers, cell references,
+            ranges, arrays, and constants, in any combination. SUM can handle up to 255 individual arguments.
+          </p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Purpose</h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">Add numbers together</p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Return value </h2>
+            </div>
+          </p-divider>
+          <p class="pl-4">The sum of values supplied.</p>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Syntax</h2>
+            </div>
+          </p-divider>
+
+          <h3 class="function-prototype pl-4">
+            =
+            <span class="function-name">SUM</span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">number1</span>,
+            <span class="required-parameter">number2</span>,
+            <span class="required-parameter">number3</span>,
+            ..............
+            <span class="bracket">)</span>
+          </h3>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Arguments </h2>
+            </div>
+          </p-divider>
+          <dl class="pl-4">
+            <dt>number1 </dt>
+            <dd>-The first value to sum.</dd>
+            <dt>number2</dt>
+            <dd>- [optional] The second value to sum.</dd>
+            <dt>number3 </dt>
+            <dd>- [optional] The third value to sum.</dd>
+
+          </dl>
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Examples </h2>
+            </div>
+          </p-divider>
+
+          <p class="pl-4"><a target="_blank" href="https://docs.google.com/spreadsheets/d/1TB5QHMCjyOkXAd21DnBLQ3ltokYnW9eS/edit?usp=sharing&ouid=118260942591483717190&rtpof=true&sd=true">Example of sum function</a></p>
+          <!-- <p>Typically, the SUM function is used with ranges. For example:</p>
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">SUM</span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">A1</span>:
+            <span class="required-parameter">A9</span>
+            <span class="bracket">)</span>
+          </h3> -->
+        </div>
+      </ng-template>
+    </p-accordionTab>
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">SUMIF Function</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="text-body">
+          <h2>Summary</h2>
+          <p>The Excel SUMIF function returns the sum of cells that meet a single condition. Criteria can be applied to
+            dates, numbers, and text. The SUMIF function supports logical operators (>,<,<>,=) and wildcards (*,?) for
+              partial matching.</p>
+          <h2>Purpose</h2>
+          <p>Sum numbers in a range that meet supplied criteria</p>
+          <h2>Return value </h2>
+          <p>The sum of values supplied.</p>
+          <h2>Syntax</h2>
+
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">SUMIF </span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">range</span>,
+            <span class="required-parameter">criteria</span>,
+            [sum_range]
+            <span class="bracket">)</span>
+          </h3>
+          <h2>Arguments </h2>
+          <dl>
+            <dt>range </dt>
+            <dd>- Range to apply criteria to.</dd>
+            <dt>criteria</dt>
+            <dd>- Criteria to apply.</dd>
+            <dt>[sum_range] </dt>
+            <dd>- [optional] Range to sum. If omitted, cells in range are summed.</dd>
+
+          </dl>
+          <h2>Examples </h2>
+          <p><a target="_blank" href="https://docs.google.com/spreadsheets/d/1e9ZR7fUzzRmpxkIA4ozANb1zaGN0HPZ5/edit?usp=sharing&ouid=113325637092197283063&rtpof=true&sd=true">Examples</a></p>
+          <!-- <p>Typically, the SUM function is used with ranges. For example:</p>
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">SUM</span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">A1</span>:
+            <span class="required-parameter">A9</span>
+            <span class="bracket">)</span>
+          </h3> -->
+        </div>
+      </ng-template>
+    </p-accordionTab>
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">IF Function</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="text-body">
+          <h2>Summary</h2>
+          <p>The IF function runs a logical test and returns one value for a TRUE result, and another for a FALSE
+            result. For example, to "pass" scores above 70: =IF(A1>70,"Pass","Fail"). More than one condition can be
+            tested by nesting IF functions. The IF function can be combined with logical functions like AND and OR to
+            extend the logical test.</p>
+          <h2>Purpose</h2>
+          <p>Test for a specific condition</p>
+          <h2>Return value </h2>
+          <p>The values you supply for TRUE or FALSE</p>
+          <h2>Syntax</h2>
+
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">IF</span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">logical_test</span>,
+            [value_if_true],
+            [value_if_false]
+            <span class="bracket">)</span>
+          </h3>
+          <h2>Arguments </h2>
+          <dl>
+            <dt>logical_test</dt>
+            <dd>-A value or logical expression that can be evaluated as TRUE or FALSE.</dd>
+            <dt>value_if_true</dt>
+            <dd>- [optional] The value to return when logical_test evaluates to TRUE.</dd>
+            <dt>value_if_false </dt>
+            <dd>- [optional] The value to return when logical_test evaluates to FALSE.</dd>
+
+
+          </dl>
+        </div>
+      </ng-template>
+    </p-accordionTab>
+
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">COUNTIF Function</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="text-body">
+          <h2>Summary</h2>
+          <p>COUNTIF is an Excel function to count cells in a range that meet a single condition. COUNTIF can be used to
+            count cells that contain dates, numbers, and text. The criteria used in COUNTIF supports logical operators
+            (>,<,<>,=) and wildcards (*,?) for partial matching.</p>
+          <h2>Purpose</h2>
+          <p>Count cells that match criteria</p>
+          <h2>Return value </h2>
+          <p>A number representing cells counted.</p>
+          <h2>Syntax</h2>
+
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">COUNTIF</span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">range</span>,
+            <span class="required-parameter">criteria</span>
+            <span class="bracket">)</span>
+          </h3>
+          <h2>Arguments </h2>
+          <dl>
+            <dt>range</dt>
+            <dd>-The range of cells to count.</dd>
+            <dt>criteria </dt>
+            <dd>- The criteria that controls which cells should be counted.</dd>
+          </dl>
+        </div>
+      </ng-template>
+    </p-accordionTab>
+
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">COUNT Function</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="text-body">
+          <h2>Summary</h2>
+          <p>The Excel COUNT function returns a count of values that are numbers. Numbers include negative numbers,
+            percentages, dates, times, fractions, and formulas that return numbers. Empty cells and text values are
+            ignored.</p>
+          <h4>** COUNT Function only work on numeric funtion, do not work on Characters</h4>
+          <h2>Purpose</h2>
+          <p>Count numbers</p>
+          <h2>Return value </h2>
+          <p>Count of numeric values</p>
+          <h2>Syntax</h2>
+
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">COUNT </span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">value1</span>,
+            [value2],.....
+            <span class="bracket">)</span>
+          </h3>
+          <h2>Arguments </h2>
+          <dl>
+            <dt>value1</dt>
+            <dd>- An item, cell reference, or range.</dd>
+            <dt>value2 </dt>
+            <dd>-[optional] An item, cell reference, or range.</dd>
+          </dl>
+          <p>Typically, the COUNT function is used on a range. For example, to count numeric values in the range A1:A10:
+          </p>
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">COUNT </span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">A1</span>:
+            <span class="required-parameter">A100</span>
+
+            <span class="bracket">)</span>
+            // count numbers in A1:A10
+          </h3>
+        </div>
+      </ng-template>
+    </p-accordionTab>
+
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">COUNTA Function</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="text-body">
+          <h2>Summary</h2>
+          <p>The Excel COUNTA function returns the count of cells that contain numbers, text, logical values, error
+            values, and empty text (""). COUNTA does not count empty cells.</p>
+
+          <h2>Purpose</h2>
+          <p>Count the number of non-blank cells</p>
+          <h2>Return value </h2>
+          <p>A number representing non-blank cells.</p>
+          <h2>Syntax</h2>
+
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">COUNTA </span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">value1</span>,
+            [value2],.....
+            <span class="bracket">)</span>
+          </h3>
+          <h2>Arguments </h2>
+          <dl>
+            <dt>value1</dt>
+            <dd>- An item, cell reference, or range.</dd>
+            <dt>value2 </dt>
+            <dd>-[optional] An item, cell reference, or range.</dd>
+          </dl>
+          <p>In the example shown, COUNTA is set up to values in the range B5:B15</p>
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">COUNTA </span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">B5</span>:
+            <span class="required-parameter">B15</span>
+
+            <span class="bracket">)</span>
+            // returns 9. COUNTA returns 9, since there are 9 non-empty cells in the range B5:B15.
+          </h3>
+
+          <p>The COUNTA function counts numbers and text:</p>
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">COUNTA </span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">1</span>,
+            <span class="required-parameter">2</span> ,
+            <span class="required-parameter">3</span>
+
+            <span class="bracket">)</span>
+            // returns 3
+          </h3>
+
+          <p>The COUNTA function counts numbers and text:</p>
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">COUNTA </span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">1</span>,
+            <span class="required-parameter">"a"</span> ,
+            <span class="required-parameter">"b"</span>
+
+            <span class="bracket">)</span>
+            // returns 3
+          </h3>
+
+          <p>The COUNTA function counts numbers and text:</p>
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">COUNTA </span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">1</span>,
+            <span class="required-parameter">2</span> ,
+            <span class="required-parameter">3</span> ,
+            <span class="required-parameter">"a"</span>,
+            <span class="required-parameter">5%</span>
+
+            <span class="bracket">)</span>
+            // returns 3
+
+          </h3>
+          <h2>Example</h2>
+          <p><a target="_blank" href="https://docs.google.com/spreadsheets/d/1qMge_zn-CMVQMaK6giw-DMvCJOz7T8Sr/edit?usp=sharing&ouid=113325637092197283063&rtpof=true&sd=true">Examples</a></p>
+        </div>
+      </ng-template>
+    </p-accordionTab>
+  </p-accordion>
+</div>

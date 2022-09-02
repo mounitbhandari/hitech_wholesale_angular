@@ -1,0 +1,39 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="assets/eduvenv_round.svg" alt="Company Logo" class="eduvenv"/>
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2">APPLICATIONS</h2>
+  <a mat-list-item routerLink="/home" routerLinkActive="list-item-active">
+    <mat-icon>home</mat-icon> Home
+  </a>
+  <a mat-list-item routerLink="/dashboard" routerLinkActive="list-item-active">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+
+  <a mat-list-item (click)="toggle()">
+    <mat-icon>spa</mat-icon> Master
+    <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+  </a>
+  <div *ngIf="display">
+    <a mat-list-item routerLink="/login" routerLinkActive="list-item-active">
+      <mat-icon>child_care</mat-icon> Login
+    </a>
+    <a mat-list-item>
+      <mat-icon>child_care</mat-icon> Child 2
+    </a>
+  </div>
+
+  <a mat-list-item routerLink="/courseContent" routerLinkActive="list-item-active">
+    <mat-icon>edit</mat-icon> Course Content
+  </a>
+  <a mat-list-item routerLink="/StudentQuery" routerLinkActive="list-item-active">
+    <mat-icon>edit</mat-icon> Student Query
+  </a>
+  <a mat-list-item>
+    <mat-icon>edit</mat-icon> Link 5
+  </a>
+  <a mat-list-item>
+    <mat-icon>edit</mat-icon> Link 6
+  </a>
+</mat-nav-list>

@@ -1,0 +1,556 @@
+<p-toast position="top-center" key="myKey1" (onClose)="onReject()" [baseZIndex]="5000">
+  <ng-template let-message pTemplate="message">
+    <div style="text-align: center">
+      <!-- <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i> -->
+      <h3>{{message.summary}}</h3>
+      <p>{{message.detail}}</p>
+    </div>
+    <!-- <div class="ui-g ui-fluid"> -->
+    <!-- <div class="ui-g-6"> -->
+    <!-- <button type="button" pButton (click)="onReject()" label="Close" class="ui-button-secondary"></button> -->
+    <!-- </div> -->
+    <!-- </div> -->
+  </ng-template>
+</p-toast>
+
+<div data-aos="fade-right">
+  <p-accordion  (onOpen)="onTabOpen($event)">
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">NOW Function</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="accordion-body">
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+              <h2>Summary</h2>
+            </div>
+          </p-divider>
+          <p>The Excel NOW function returns the current date and time, updated continuously when a worksheet
+            is changed or opened. The NOW function takes no arguments. You can format the value returned by
+            NOW as a date, or as a date with time by applying a number format.</p>
+          <h2>Purpose</h2>
+          <p>Get the current date and time</p>
+          <h2>Return value </h2>
+          <p>A number representing the current date and time in Excel.</p>
+          <h2>Syntax</h2>
+
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">NOW</span>
+            <span class="bracket">(</span>
+            <span class="bracket">)</span>
+          </h3>
+          <h2>Usage Notes </h2>
+          <p>
+            NOW takes no parameters but requires empty parentheses. The value returned by NOW will
+            continually update each time the worksheet is updated, for example, each time a value is entered
+            or changed. Use F9 to force the worksheet to recalculate and update the value.
+
+            The value returned by the NOW function is a standard Excel date, including a fractional value
+            for time. To display the result as a date, apply a date number format. Optionally customize the
+            number format to include the time. If you want the current date without a time value, use the
+            TODAY function.
+          </p>
+
+          <h2>Examples </h2>
+          <p>The examples below show how the NOW function can be used in various ways:</p>
+          <p>
+            =NOW() // current date and time<br>
+            =NOW()-7 // last week same time<br>
+            =NOW()+7 // next week same time<br>
+            =NOW()+90 // 90 days from now<br>
+          </p>
+
+        </div>
+      </ng-template>
+    </p-accordionTab>
+
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">TODAY Function</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="accordion-body">
+          <h2>Summary</h2>
+          <p>The Excel TODAY function returns the current date, updated continuously when a worksheet is
+            changed or opened. The TODAY function takes no arguments. You can format the value returned by
+            TODAY with a date number format.</p>
+          <h2>Purpose</h2>
+          <p>Get the current date</p>
+          <h2>Return value </h2>
+          <p>Excel date as a serial number</p>
+          <h2>Syntax</h2>
+
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">TODAY </span>
+            <span class="bracket">(</span>
+            <span class="bracket">)</span>
+          </h3>
+          <h2>Usage Notes </h2>
+          <p>
+            The TODAY function returns the current date, and will continually update each time the worksheet
+            is updated. Use F9 to force the worksheet to recalculate and update the value.
+
+            The value returned by the TODAY function is a standard Excel date. To display the result as a
+            date, apply a date number format. Optionally customize the number format as you like. If you
+            want the current date with a time value, use the NOW function.
+          </p>
+
+          <h2>Examples </h2>
+          <p>The TODAY function can be used on its own, or combined with other functions. The formulas below
+            show how the TODAY function can be used in various ways:</p>
+          <p>
+            =TODAY() // current date<br>
+            =TODAY()-7 // one week in past<br>
+            =TODAY()+7 // one week in future<br>
+            =TODAY()+90 // 90 days from today<br>
+          </p>
+
+        </div>
+      </ng-template>
+    </p-accordionTab>
+
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">YEAR Function</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="accordion-body">
+          <h2>Summary</h2>
+          <p>The Excel YEAR function returns the year component of a date as a 4-digit number. You can use the
+            YEAR function to extract a year number from a date into a cell or to extract and feed a year
+            value into another formula, like the DATE function.</p>
+          <h2>Purpose</h2>
+          <p>Get the year from a date</p>
+          <h2>Return value </h2>
+          <p>Year as 4-digit number</p>
+          <h2>Syntax</h2>
+
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">YEAR </span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">date</span>
+            <span class="bracket">)</span>
+          </h3>
+          <h2>Arguments </h2>
+          <dl>
+            <dt>date </dt>
+            <dd>- A valid Excel date.</dd>
+
+          </dl>
+          <h2>Usage Notes </h2>
+          <p>
+            The YEAR function extracts the year from a given date as a 4-digit number. For example:
+          </p>
+
+          <h2>Examples </h2>
+          <p>The YEAR function extracts the year from a given date as a 4-digit number. For example:</p>
+          <p>
+            =YEAR("23-Aug-2012") // returns 2012<br>
+            =YEAR("11-May-2019") // returns 2019<br>
+          </p>
+          <p>
+            You can use the YEAR function to extract a month number from a date into a cell, or to feed a
+            month number into another function like the DATE function:
+          </p>
+          <h2>NOTES</h2>
+
+          <ul>
+            <li>YEAR will return a #VALUE error on text values.</li>
+          </ul>
+
+
+        </div>
+      </ng-template>
+    </p-accordionTab>
+
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">MONTH Function</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="accordion-body">
+          <h2>Summary</h2>
+          <p>The Excel MONTH function extracts the month from a given date as number between 1 to 12. You can
+            use the MONTH function to extract a month number from a date into a cell, or to feed a month
+            number into another function like the DATE function.</p>
+          <h2>Purpose</h2>
+          <p>Get month as a number (1-12) from a date</p>
+          <h2>Return value </h2>
+          <p>A number between 1 and 12.</p>
+          <h2>Syntax</h2>
+
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">MONTH </span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">serial_number</span>
+            <span class="bracket">)</span>
+          </h3>
+          <h2>Arguments </h2>
+          <dl>
+            <dt>serial_number </dt>
+            <dd>- A valid Excel date.</dd>
+
+          </dl>
+          <h2>Usage Notes </h2>
+          <p>
+            The MONTH function extracts the month from a given date as a number between 1 to 12. For
+            example, given the date "June 12, 2021", the MONTH function will return 6 for June. MONTH takes
+            just one argument, serial_number, which must be a valid Excel date.
+
+            Dates can be supplied to the MONTH function as text (e.g. "13-Aug-2021") or as native Excel
+            dates, which are large serial numbers. To create a date value from scratch with separate year,
+            month, and day inputs, use the DATE function.
+
+            The MONTH function will "reset" every 12 months (like a calendar). To work with month durations
+            larger than 12, use a formula to calculate months between dates.
+
+            The MONTH function returns a number.
+          </p>
+
+          <h2>Examples </h2>
+          <p>To use the MONTH function, supply a date:</p>
+          <p>
+            =MONTH("23-Aug-2012") // returns 8<br>
+            =MONTH("11-May-2019") // returns 5<br>
+          </p>
+          <p>
+            With the date "September 15, 2017" in cell A1, MONTH returns 9:
+          </p>
+          <p>=MONTH(A1) // returns 9</p>
+          <h2>NOTES</h2>
+
+          <ul>
+            <li>MONTH will return #VALUE! if a date is not recognized.</li>
+            <li>MONTH will return #NUM! if a date is supplied as a number that is out of range (i.e. -1).
+            </li>
+          </ul>
+
+
+        </div>
+      </ng-template>
+    </p-accordionTab>
+
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">DATE Function</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="accordion-body">
+          <h2>Summary</h2>
+          <p>The Excel DATE function creates a valid date from individual year, month, and day components. The
+            DATE function is useful for assembling dates that need to change dynamically based on other
+            values in a worksheet.</p>
+          <h2>Purpose</h2>
+          <p>Create a date with year, month, and day</p>
+          <h2>Return value </h2>
+          <p>A valid Excel date</p>
+          <h2>Syntax</h2>
+
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">DATE </span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">year</span>,
+            <span class="required-parameter">month</span>,
+            <span class="required-parameter">day</span>
+            <span class="bracket">)</span>
+          </h3>
+          <h2>Arguments </h2>
+          <dl>
+            <dt>year </dt>
+            <dd>- Number for year.</dd>
+            <dt>month </dt>
+            <dd>- Number for month.</dd>
+            <dt>day </dt>
+            <dd>- Number for day.</dd>
+
+          </dl>
+          <h2>Usage Notes </h2>
+          <p>
+            The DATE function creates a date using individual year, month, and day arguments. Each argument
+            is provided as a number, and the result is a serial number that represents a valid Excel date.
+            Apply a date number format to display the output from the DATE function as a date.
+
+            In general, the DATE function is the safest way to create a date in an Excel formula, because
+            year, month, and day values are numeric and unambiguous, in contrast to text representations of
+            dates which can be misinterpreted.
+          </p>
+
+          <h2>Examples </h2>
+          <p>For example, you can use the DATE function to create the dates January 1, 1999, and June 1, 2010
+            with the following syntax:</p>
+          <p>
+            <b>=DATE(1999,1,1)</b> // returns Jan 1, 1999<br>
+            <b>=DATE(2010,6,1)</b> // returns Jun 1, 2010
+          </p>
+
+          <p>The DATE function is useful for assembling dates that need to change dynamically based on other
+            inputs in a worksheet. For example, with 2018 in cell A1, the formula below returns the date
+            April 15, 2018:</p>
+          <p>
+            <b>=DATE(A1,4,15)</b> // Apr 15, 2018
+          </p>
+
+          <p>To return the first day of the current year, you can use the DATE function like this:</p>
+          <p>
+            <b>=DATE(YEAR(TODAY()),1,1)</b> // first of year
+          </p>
+          <p>
+            This is an example of nesting. The TODAY function returns the current date to the YEAR function.
+            The YEAR function extracts the year and returns the result to the DATE function as the year
+            argument. The month and day arguments are hard-coded as 1. The result is the first day of the
+            current year, a date like "January 1, 2021".
+
+            Note: the DATE function actually returns a serial number and not a formatted date. In Excel's
+            date system, dates are serial numbers. January 1, 1900 is number 1 and later dates are larger
+            numbers. To display date values in a human-readable date format, apply the number format of your
+            choice.
+          </p>
+
+          <h2>NOTES</h2>
+
+          <ul>
+            <li>The DATE function returns a serial number that corresponds to an Excel date.</li>
+            <li>Excel dates begin in the year 1900. If year is between zero and 1900, Excel will add 1900.
+            </li>
+            <li>The DATE function accepts numeric input only and will return #VALUE if given text.</li>
+          </ul>
+
+
+        </div>
+      </ng-template>
+    </p-accordionTab>
+
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">EDATE Function</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="accordion-body">
+          <h2>Summary</h2>
+          <p>
+            The Excel EDATE function returns a date on the same day of the month, n months in the past or future. You
+            can use EDATE to calculate expiration dates, maturity dates, and other due dates. Use a positive value for
+            months to get a date in the future, and a negative value for dates in the past.
+          </p>
+          <h2>Purpose</h2>
+          <p>Shift date n months in future or past</p>
+          <h2>Return value </h2>
+          <p>New date as Excel serial number</p>
+          <h2>Syntax</h2>
+
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">EDATE </span>
+            <span class="bracket">(</span>
+            <span class="required-parameter">start_date</span>,
+            <span class="required-parameter">months</span>
+            <span class="bracket">)</span>
+          </h3>
+          <h2>Arguments </h2>
+          <dl>
+            <dt>start_date </dt>
+            <dd>- Start date as a valid Excel date.</dd>
+            <dt>months </dt>
+            <dd>- Number of months before or after start_date.</dd>
+
+          </dl>
+          <h2>Usage Notes </h2>
+          <p>
+            The EDATE function can add or subtract whole months from a date. You can use EDATE to calculate expiration
+            dates, contract dates, due dates, anniversary dates, retirement dates, and other dates in the future or
+            past. The EDATE function takes two arguments: start_date and months. Start_date must be a valid Excel date.
+            The months argument specifies how many months in the future or past to move – use a positive number to move
+            forward in time, and a negative number to move back in time.
+
+            EDATE will return a serial number corresponding to a date. To display the result as a date, apply a number
+            format of your choice.
+          </p>
+
+          <h2>Examples </h2>
+          <p>If A1 contains the date February 1, 2018, you can use EDATE like this:</p>
+          <p>
+            <b>=EDATE(A1,1)</b> // returns March 1, 2018<br>
+            <b>=EDATE(A1,3)</b> // returns May 1, 2018<br>
+            <b>=EDATE(A1,-1)</b> // returns January 1, 2018<br>
+            <b>=DATE(A1,-2)</b> // returns December 1, 2017
+          </p>
+
+          <p>To use EDATE with today's date, you can combine it with the TODAY function. For example, to create a date
+            exactly 6 months from today, you can use:</p>
+          <p>
+            <b>=EDATE(TODAY(),6)</b> // 6 months from today
+          </p>
+
+          <p>To use the EDATE function to move by years, multiply by 12. For example, to move a date forward 2 years,
+            you can use either of these formulas:</p>
+          <p>
+            <b>=EDATE(A1,24)</b> // forward 2 years<br>
+            <b>=EDATE(A1,2*12)</b> // forward 2 years<br>
+
+            <span>The second form is handy when you already have a value for years in another cell and want to convert
+              to months inside EDATE.</span>
+          </p>
+
+          <p>EDATE is clever about rolling "end of month" dates forwards or backwards, and will adjust year, month, and
+            day values as necessary. For example EDATE will maintain the last day of month when a day is 31:</p>
+          <p>
+            <b>=EDATE("31-Jan-2019",1)</b> // returns 28-Feb-2019<br>
+            <b>=EDATE("31-Jan-2019",2)</b> // returns 31-Mar-2019<br>
+            <b>=EDATE("31-Jan-2019",3)</b> // returns 30-Apr-2019<br>
+            <b>=EDATE("31-Jan-2019",4)</b> // returns 31-May-2019<br>
+            <b>=EDATE("31-Jan-2019",5)</b> // returns 30-Jun-2019
+          </p>
+          <p>EDATE will also respect leap years:</p>
+          <p>
+            <b>=EDATE("31-Jan-2020",1)</b> // returns 29-Feb-2020
+          </p>
+
+          <p>However, EDATE will not maintain an end of month when the day value is less than 31. For example:</p>
+          <p>
+            <b>=EDATE("28-Feb-2019",1)</b> // returns 28-Mar-2019
+          </p>
+
+          <p>The EDATE function will strip times from dates that include time (sometimes called a "datetime"). To
+            preserve the time in a date, you can use a formula like this:</p>
+          <p>
+            <b>=EDATE(A1,n)+MOD(A1,1)</b>
+          </p>
+
+
+          <h2>NOTES</h2>
+
+          <ul>
+            <li>EDATE will return the #VALUE error if the start date is not a valid date.</li>
+            <li>If the start date has a fractional time attached, it will be removed. </li>
+            <li>If the months argument contains a decimal value, it will be removed.</li>
+            <li>To calculate an end of month date, see the EOMONTH function.</li>
+            <li>EDATE returns a date serial number, which must be formatted as a date.</li>
+          </ul>
+
+
+        </div>
+      </ng-template>
+    </p-accordionTab>
+
+    <p-accordionTab>
+      <ng-template pTemplate="header">
+        <div style="color: #3804a0;">EOMONTH Function</div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="flex-column p-2 bd-highlight accordion-body">
+          <p-button
+            label="Summary"
+            pTooltip="Summary of eomonth() function"
+            tooltipPosition="bottom">
+          </p-button>
+
+          <h2 pTooltip="It is a tooltip">Summary</h2>
+          <p>
+            The Excel <span style="color: blue;" pTooltip="=EOMONTH(start_date, months)">EOMONTH</span> function returns the last day of the month, n months in the past or future.,<br> You can use EDATE to calculate expiration dates, due dates, and other dates that need to land on the last day of a month. Use a positive value for months to move forward in time, and a negative number to move back in time.
+          </p>
+          <h2>Purpose</h2>
+          <p>Get last day of month n months in future or past</p>
+          <h2>Return value </h2>
+          <p>Last day of month date</p>
+          <h2>Syntax</h2>
+
+          <h3 class="function-prototype">
+            =
+            <span class="function-name">EOMONTH </span>
+            <span class="bracket">(</span>
+            <span class="required-parameter" pTooltip="Put a date you want" tooltipPosition="bottom">start_date</span>,
+            <span class="required-parameter" pTooltip="Number of months before or after start_date">months</span>
+            <span class="bracket">)</span>
+          </h3>
+          <h2>Arguments </h2>
+          <dl>
+            <dt>start_date </dt>
+            <dd>- Start date as a valid Excel date.</dd>
+            <dt>months </dt>
+            <dd>- Number of months before or after start_date.</dd>
+
+          </dl>
+          <h2>Usage Notes </h2>
+          <p>
+            The EOMONTH function returns the last day of the month a given number of months in the past or future.<br> You can use EOMONTH to calculate expiration dates, due dates, and other dates that need to land on the last day of a month. The EOMONTH function takes two arguments: start_date and months. Start_date must be a valid Excel date. The months argument specifies how many months in the future or past to move – use a positive number to move forward in time, and a negative number to move back in time.
+
+
+          </p>
+
+          <h2>Examples </h2>
+          <!-- <p>If A1 contains the date February 1, 2018, you can use EDATE like this:</p>
+          <p>
+            <b>=EDATE(A1,1)</b> // returns March 1, 2018<br>
+            <b>=EDATE(A1,3)</b> // returns May 1, 2018<br>
+            <b>=EDATE(A1,-1)</b> // returns January 1, 2018<br>
+            <b>=DATE(A1,-2)</b> // returns December 1, 2017
+          </p>
+
+          <p>To use EDATE with today's date, you can combine it with the TODAY function. For example, to create a date
+            exactly 6 months from today, you can use:</p>
+          <p>
+            <b>=EDATE(TODAY(),6)</b> // 6 months from today
+          </p>
+
+          <p>To use the EDATE function to move by years, multiply by 12. For example, to move a date forward 2 years,
+            you can use either of these formulas:</p>
+          <p>
+            <b>=EDATE(A1,24)</b> // forward 2 years<br>
+            <b>=EDATE(A1,2*12)</b> // forward 2 years<br>
+
+            <span>The second form is handy when you already have a value for years in another cell and want to convert
+              to months inside EDATE.</span>
+          </p>
+
+          <p>EDATE is clever about rolling "end of month" dates forwards or backwards, and will adjust year, month, and
+            day values as necessary. For example EDATE will maintain the last day of month when a day is 31:</p>
+          <p>
+            <b>=EDATE("31-Jan-2019",1)</b> // returns 28-Feb-2019<br>
+            <b>=EDATE("31-Jan-2019",2)</b> // returns 31-Mar-2019<br>
+            <b>=EDATE("31-Jan-2019",3)</b> // returns 30-Apr-2019<br>
+            <b>=EDATE("31-Jan-2019",4)</b> // returns 31-May-2019<br>
+            <b>=EDATE("31-Jan-2019",5)</b> // returns 30-Jun-2019
+          </p>
+          <p>EDATE will also respect leap years:</p>
+          <p>
+            <b>=EDATE("31-Jan-2020",1)</b> // returns 29-Feb-2020
+          </p>
+
+          <p>However, EDATE will not maintain an end of month when the day value is less than 31. For example:</p>
+          <p>
+            <b>=EDATE("28-Feb-2019",1)</b> // returns 28-Mar-2019
+          </p>
+
+          <p>The EDATE function will strip times from dates that include time (sometimes called a "datetime"). To
+            preserve the time in a date, you can use a formula like this:</p>
+          <p>
+            <b>=EDATE(A1,n)+MOD(A1,1)</b>
+          </p>
+
+
+          <h2>NOTES</h2>
+
+          <ul>
+            <li>EDATE will return the #VALUE error if the start date is not a valid date.</li>
+            <li>If the start date has a fractional time attached, it will be removed. </li>
+            <li>If the months argument contains a decimal value, it will be removed.</li>
+            <li>To calculate an end of month date, see the EOMONTH function.</li>
+            <li>EDATE returns a date serial number, which must be formatted as a date.</li>
+          </ul> -->
+          <h1>example</h1>
+
+          <p><a target="_blank" href="https://docs.google.com/spreadsheets/d/1lyrWjtP4Ry5rGY0wRWyAunzhbHGOKhiB/edit?usp=sharing&ouid=113325637092197283063&rtpof=true&sd=true">example_sheet</a></p>
+
+
+        </div>
+      </ng-template>
+    </p-accordionTab>
+
+  </p-accordion>
+</div>

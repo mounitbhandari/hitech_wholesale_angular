@@ -1,0 +1,83 @@
+<div class="container-fluid page">
+  <div class="page__box p-3 mt-2">Dashboard</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-relative">
+      <div class="container" style="margin-top: 70px;">
+        <div class="row">
+          <div class="col-4">
+            <mat-card class="example-card" style="background-color:rgb(167, 165, 165) ;">
+              <mat-card-title-group>
+                <mat-card-title>Shiba Inu</mat-card-title>
+                <mat-card-subtitle>Small</mat-card-subtitle>
+                <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+              </mat-card-title-group>
+              <mat-card-content>
+                fdgdfgdfgdfgdfg
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="col-4">
+            <mat-card class="example-card" style="background-color:rgb(167, 165, 165) ;">
+              <mat-card-title-group>
+                <mat-card-title>Shiba Inu</mat-card-title>
+                <mat-card-subtitle>Small</mat-card-subtitle>
+                <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+              </mat-card-title-group>
+              <mat-card-content>
+                fdgdfgdfgdfgdfg
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="col-4">
+            <mat-card class="example-card" style="background-color:rgb(167, 165, 165) ;">
+              <mat-card-title-group>
+                <mat-card-title>Shiba Inu</mat-card-title>
+                <mat-card-subtitle>Small</mat-card-subtitle>
+                <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+              </mat-card-title-group>
+              <mat-card-content>
+                fdgdfgdfgdfgdfg
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- Tab -------------------------------------- -->
+    <div style="background-color:  grey;">
+      <mat-tab-group (selectedIndexChange)="onTabChanged($event)" [selectedIndex]="active" animationDuration="200ms">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">trending_up</mat-icon>
+            Chart
+          </ng-template>
+          <p style="font-size: 14px; background-color: grey; padding: 10px;">
+            On the Insert tab, the galleries include items that are designed to coordinate with the overall look of your document. You can use these galleries to insert tables, headers, footers, lists, cover pages, and other document building blocks. When you create pictures, charts, or diagrams, they also coordinate with your current document look.
+            You can easily change the formatting of selected text in the document text by choosing a look for the selected text from the Quick Styles gallery on the Home tab. You can also format text directly by using the other controls on the Home tab. Most controls offer a choice of using the look from the current theme or using a format that you specify directly.
+          </p>
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">list</mat-icon>
+            Upcoming Due List
+          </ng-template>
+          Content 2
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+            Upcoming Birthday
+          </ng-template>
+
+          Content 3
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <!-- end tab---------------------------------------------- -->
+  </div>
+</div>
+

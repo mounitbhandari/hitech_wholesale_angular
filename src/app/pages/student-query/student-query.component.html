@@ -1,0 +1,68 @@
+<div class="d-flex ml-3">
+    <form action=""  [formGroup]="studentQueryForm">
+
+      <div class="p-fluid p-grid p-formgrid">
+        <div class="p-field p-col-12 p-md-4">
+          <label for="student-name">Student Name</label>
+          <br>
+          <input id="student-name" type="text" pInputText placeholder="Student Name" formControlName="studentName">
+        </div>
+      </div>
+      <!--      --------------------------------------------------->
+      <div class="p-fluid p-grid p-formgrid">
+        <div class="p-field p-col-12 p-md-4">
+          <label for="father-name">Father Name</label>
+          <br>
+          <input id="father-name" type="text" pInputText placeholder="Father Name" formControlName="fatherName">
+        </div>
+      </div>
+
+      <div class="p-fluid p-grid p-formgrid">
+        <div class="p-field p-col-12 p-md-4">
+          <label for="mother-name">Father Name</label>
+          <br>
+          <input id="mother-name" type="text" pInputText placeholder="Mother Name" formControlName="motherName">
+        </div>
+      </div>
+
+      <div class="p-fluid p-grid p-formgrid">
+        <div class="p-field p-col-12 p-md-4">
+          <label for="guardian-name">Guardian Name</label>
+          <br>
+          <input id="guardian-name" type="text" pInputText placeholder="Guardian Name" formControlName="guardianName">
+        </div>
+      </div>
+      <div class="p-fluid p-grid p-formgrid">
+        <div class="p-field p-col-12 p-md-4">
+          <label for="relationship">Relation with Guardian</label>
+          <br>
+          <input id="relationship" type="text" pInputText placeholder="Relationship" formControlName="relationToGuardian">
+        </div>
+      </div>
+      <!--      -------------------------------------- -->
+      <div class="p-fluid p-grid p-formgrid">
+        <div class="p-field p-col-12 p-md-4">
+          <label for="phone-number">Phone Number</label>
+          <br>
+          <input id="phone-number" type="text" pInputText placeholder="Relationship" formControlName="phoneNumber">
+        </div>
+      </div>
+
+      <div class="p-fluid p-grid p-formgrid">
+        <div class="p-field p-col-12 p-md-4">
+          <label for="query">Query</label>
+          <br>
+          <textarea id="query" pInputTextarea placeholder="Query" formControlName="query"></textarea>
+        </div>
+      </div>
+
+      <div class="p-fluid p-grid p-formgrid">
+        <div class="p-field p-col-12 p-md-4">
+          <button (click)="saveQuery()">Save</button>
+        </div>
+      </div>
+
+
+    </form>
+
+</div>

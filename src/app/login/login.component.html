@@ -1,0 +1,45 @@
+<mat-card>
+  <mat-card-content>
+    <div class="header">
+      <h3>Sign Into Your Account </h3>
+    </div>
+    <form name="loginForm" [formGroup]="loginForm">
+      <div class="emailInput">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label><mat-icon>email</mat-icon> Email</mat-label>
+          <input
+            formControlName="loginId"
+            matInput
+            placeholder="Enter email address" required
+          />
+          <mat-error *ngIf="!loginForm.controls['loginId'].valid">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div>
+          <span>
+            <a class="text-link" class="aLink" routerLink="/auth/forgot-password">Forgot Password?</a>
+          </span>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label><mat-icon>password</mat-icon> Password</mat-label>
+          <input formControlName="loginPassword" matInput [type]=" hide ? 'password' : 'text'" required />
+          <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
+                   [attr.aria-pressed]="hide">
+            <mat-icon>
+              {{hide ? 'visibility_off' : 'visibility'}}
+            </mat-icon>
+          </button>
+          <mat-error *ngIf="!loginForm.controls['loginPassword'].valid">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-flat-button color="primary" (click)="login()">Login</button>
+      <button mat-flat-button color="accent" [routerLink]="['/home']">Cancel</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+

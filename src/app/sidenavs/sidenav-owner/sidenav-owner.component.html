@@ -1,0 +1,57 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="assets/eduvenv_round.svg" alt="Company Logo" class="eduvenv"/>
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2">O W N E R</h2>
+  <a mat-list-item routerLink="/home" routerLinkActive="list-item-active">
+    <mat-icon>home</mat-icon> Home
+  </a>
+  <a mat-list-item routerLink="/dashboard" routerLinkActive="list-item-active">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+
+  <a mat-list-item (click)="toggleMaster()">
+    <mat-icon>spa</mat-icon> Master
+    <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+  </a>
+  <div *ngIf="displayMaster">
+    <a mat-list-item [routerLink]="['/student']"  routerLinkActive="list-item-active">
+      <i class="bi bi-person-check-fill"></i> &nbsp; Student
+    </a>
+    <a mat-list-item [routerLink]="['/course']"  routerLinkActive="list-item-active">
+      <i class="bi bi-person-check-fill"></i> &nbsp; Course
+    </a>
+    <a mat-list-item [routerLink]="['/StudentCourseRegistration']"  routerLinkActive="list-item-active">
+      <i class="bi bi-person-check-fill"></i> &nbsp; Student To Course
+    </a>
+  </div>
+
+  <a mat-list-item (click)="toggleMaster_transaction()">
+    <mat-icon>spa</mat-icon> Transaction
+    <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+  </a>
+  <div *ngIf="displayMaster_1">
+    <a mat-list-item  [routerLink]="['/FeesCharge']" routerLinkActive="list-item-active">
+      <i class="bi bi-person-check-fill"></i> &nbsp; Fees Charge
+    </a>
+    <a mat-list-item  [routerLink]="['/FeesReceived']" routerLinkActive="list-item-active">
+      <i class="bi bi-person-check-fill"></i> &nbsp; Fees Received
+    </a>
+    
+  </div>
+
+  <a mat-list-item>
+    <mat-icon>edit</mat-icon> Link 4
+  </a>
+  <a mat-list-item>
+    <mat-icon>edit</mat-icon> Link 5
+  </a>
+  <a mat-list-item>
+    <i class="bi bi-person-check-fill"></i> Link 6
+  </a>
+
+
+
+</mat-nav-list>
+

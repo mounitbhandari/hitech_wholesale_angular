@@ -1,0 +1,19 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="assets/eduvenv_round.svg" alt="Company Logo" class="eduvenv"/>
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2">T U T O R I A L</h2>
+
+  <a mat-list-item (click)="toggleDigitalElectronics()">
+    <i class="bi bi-mortarboard-fill"></i> &nbsp; Digital Electronic
+    <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+  </a>
+  <div *ngIf="displayDigitalElectronic">
+    <a mat-list-item [routerLink]="['/FlipFlop']"  routerLinkActive="list-item-active">
+      <i class="bi bi-vector-pen"></i> &nbsp; Flip Flop
+    </a>
+  </div>
+</mat-nav-list>
+
+

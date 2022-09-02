@@ -1,0 +1,17 @@
+.course-form{
+  min-height: 50vh;
+  min-width:50vh;
+  background-color:
+  rgb(80, 78, 78);
+  background-image: linear-gradient(to right, rgb(61, 58, 58) , rgb(147, 147, 145));
+  border-radius: 25px 25px;
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}
+.p-datatable .p-datatable-tbody > tr > td {
+  text-align: left;
+  border: 1px solid #e9ecef;
+  border-width: 0 0 1px 0;
+  padding: 0px 0px;
+}

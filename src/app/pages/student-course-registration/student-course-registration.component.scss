@@ -1,0 +1,36 @@
+.page{
+  color: white;
+  padding: 0 1rem;
+  background: #f1f5f9;
+  &__box{
+    min-height: 100px;
+    background: #1e293b;
+    margin: 0 -1rem;
+    font-size: 36px;
+  }
+  &__content{
+    min-height: calc(100vh - 160px);
+    border-radius: 10px;
+    margin-top: -3rem;
+    background: white;
+    color: black;
+    font-size: 20px;
+    &-data{
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+  }
+}
+
+.student-to-course-form{
+    min-height: 50vh;
+    min-width:50vh;
+    background-color:rgb(195, 188, 188);
+  
+    /* background-image: linear-gradient(to right, rgb(114, 110, 110) , rgb(165, 165, 160)); */
+    border-radius: 25px 25px;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+  }

@@ -1,0 +1,555 @@
+<p-dialog header="Title" position="top" [transitionOptions]="'600ms'" [(visible)]="displayDialog" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+  {{dialogContent}}
+</p-dialog>
+
+<p-toast></p-toast>
+<p-toast position="top-left" key="tl"></p-toast>
+<p-toast position="top-center" key="tc"></p-toast>
+<p-toast position="bottom-center" key="bc"></p-toast>
+
+
+
+<div class="d-flex flex-row bd-highlight mb-3" style="height: 200vh;">
+  <div class="p-2 bd-highlight">
+    <div class="card">
+      <div class="card-header p-3 mt-2">
+        <p style="color: #1e293b; font-size: 36px;">Student Entry Form</p>
+      </div>
+      <div class="card-body">
+        <div>
+          <!--          Start of stepper-->
+          <mat-stepper [linear]="isLinear" #stepper style="min-height: 50vh; background-color: grey;background-image: linear-gradient(to right, grey , white); border-radius: 25px 25px; -webkit-box-shadow: 0 10px 6px -6px #777;-moz-box-shadow: 0 10px 6px -6px #777;box-shadow: 0 10px 6px -6px #777;">
+            <mat-step [stepControl]="studentNameFormGroup" label="Name">
+              <form [formGroup]="studentNameFormGroup">
+
+
+
+                <div class="form-group">
+                  <mat-form-field class="col-12">
+                    <input matInput placeholder="Student Name"  (blur)="sameAsBillName()" formControlName="studentName">
+                    <div *ngIf="studentNameFormGroup.controls['studentName'].errors && studentNameFormGroup.controls['studentName'].touched" >
+                      <mat-error class="text-right" *ngIf="studentNameFormGroup.controls['studentName'].errors['required']">Student Name is required</mat-error>
+                    </div>
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <mat-form-field class="col-12">
+                    <input matInput placeholder="Billing Name" formControlName="billingName" value={{billingName}}>
+                  </mat-form-field>
+
+                </div>
+                <div class="form-group" *ngIf = "hiddenInput">
+                  <mat-form-field class="col-12">
+                    <input matInput placeholder="studentId" formControlName="studentId" >
+                  </mat-form-field>
+
+                </div>
+                <div class="form-group" *ngIf = "hiddenInput">
+                  <mat-form-field class="col-12">
+                    <input matInput placeholder="episodeId" formControlName="episodeId" >
+                  </mat-form-field>
+
+                </div>
+                <button pButton matStepperNext [disabled]="!studentNameFormGroup.valid" class="p-button-warning">
+                  Next <i class="pi pi-chevron-right" style="font-size: 1rem"></i>
+                </button>
+              </form>
+            </mat-step>
+
+            <mat-step [stepControl]="studentGuardianFormGroup" label="Guardian">
+              <form [formGroup]="studentGuardianFormGroup">
+
+                <div class="form-group">
+                  <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="p-2 col-11 bd-highlight">
+                      <mat-form-field class="col-12">
+                        <input matInput placeholder="Father Name" formControlName="fatherName" #fatherName>
+                      </mat-form-field>
+                    </div>
+                    <div class="p-2 bd-highlight">
+                      <button pButton pRipple type="button" icon="pi pi-user" class="p-button-info p-button-rounded p-button-info" (click)=guardianAsFather(fatherName.value)></button>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="form-group">
+                  <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="p-2 col-11 bd-highlight">
+                      <mat-form-field class="col-12">
+                        <input matInput placeholder="Mother Name" formControlName="motherName" #mother>
+                      </mat-form-field>
+                    </div>
+                    <div class="p-2 bd-highlight">
+                      <button pButton pRipple type="button" icon="pi pi-user" class="p-button-rounded p-button-warning" (click)=guardianAsMother(mother.value)></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+
+
+                  <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="p-2 col-8 bd-highlight">
+                      <mat-form-field class="col-12">
+                        <input matInput placeholder="Guardian" formControlName="guardianName">
+                      </mat-form-field>
+                    </div>
+                    <div class="p-2 col-4 bd-highlight" >
+                      <ng-select [items]="relations"
+                                 fxFlex="100"
+                                 bindLabel="name"
+                                 class="custom"
+                                 bindValue="name"
+                                 appendTo="body"
+                                 formControlName="relationToGuardian"
+                                 placeholder="Relation"
+                                 style="height: 200 !important;">
+                      </ng-select>
+                    </div>
+                  </div>
+
+
+                </div>
+                <div style="vertical-align:bottom;">
+                  <button pButton matStepperPrevious class="p-button-success">
+                    <i class="pi pi-chevron-left" style="font-size: 1rem"></i> Prev
+                  </button>
+                  <button pButton matStepperNext  class="p-button-warning">
+                   Next <i class="pi pi-chevron-right" style="font-size: 1rem"></i>
+                  </button>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step [stepControl]="studentBasicFormGroup" label="Basic">
+              <form [formGroup]="studentBasicFormGroup">
+                <div class="form-group">
+                  <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="p-2 col-4 bd-highlight">
+
+                        <mat-form-field >
+                          <mat-label>Date Of Birth</mat-label>
+                          <input class="col-9" matInput #ref [matDatepicker]="dob" formControlName="dob" (dateInput)="setDobSQL(ref.value)">
+                          <div *ngIf="studentBasicFormGroup.controls['dob'].errors && studentBasicFormGroup.controls['dob'].touched" >
+                            <mat-error class="text-right" *ngIf="studentBasicFormGroup.controls['dob'].errors['required']">DOB is required</mat-error>
+                            <mat-error class="text-right" *ngIf="studentBasicFormGroup.controls['dob'].errors['ageGTE']">
+                              Age is {{studentBasicFormGroup.controls['dob'].errors['currentAge']}}
+                            </mat-error>
+                            <mat-error class="text-right" *ngIf="studentBasicFormGroup.controls['dob'].errors['ageGTE']">
+                              Age should be more than {{studentBasicFormGroup.controls['dob'].errors['requiredValue']}}
+                            </mat-error>
+                          </div>
+
+                          <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+                          <mat-datepicker #dob></mat-datepicker>
+
+                        </mat-form-field>
+
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Qualification</mat-label>
+                        <input type="text"
+                               placeholder="Select Qualification"
+                               aria-label="Qualification"
+                               matInput
+                               formControlName="qualification"
+                               [matAutocomplete]="auto">
+                        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                          <mat-option *ngFor="let option of filteredQualifications | async" [value]="option">
+                            {{option}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+
+                      <p-selectButton [options]="genders" formControlName="sex"  optionLabel="name" optionValue="value">
+                        <ng-template let-item>
+                            <span  [pTooltip]="item.tooltip">{{item.name}} <i [class]="item.icon"></i> </span>
+                        </ng-template>
+                      </p-selectButton>
+                      <hr>
+                      <div class="snapshot bd-highlight mb-3" *ngIf="webcamImage" style="height: 200px; width: 200px;">
+                        <img [src]="webcamImage.imageAsDataUrl" class="img-fluid"/>
+                      </div>
+                      <button mat-button pButton  *ngIf="webcamImage" (click)="saveUserImage()">
+                        <i class="bi bi-person-bounding-box">&nbsp;Save</i>
+                      </button>
+
+                    </div>
+
+
+                    <div class="p-2 col-6 bd-highlight">
+                      <app-camera (pictureTaken)="handleImage($event)"></app-camera>
+
+                    </div>
+
+                  </div>
+
+
+                </div>
+                <div style="vertical-align:bottom;">
+                  <button pButton matStepperPrevious class="p-button-success">
+                    <i class="pi pi-chevron-left" style="font-size: 1rem"></i> Prev
+                  </button>
+                  <button pButton matStepperNext class="p-button-warning">
+                    Next <i class="pi pi-chevron-right" style="font-size: 1rem"></i>
+                  </button>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step [stepControl]="studentAddressFormGroup" label="Address">
+              <form [formGroup]="studentAddressFormGroup">
+                <div class="form-group">
+                  <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="p-2 col-8 bd-highlight">
+                        <mat-form-field style = "width:100%">
+                          <mat-label>Address:</mat-label>
+                          <input matInput formControlName="address" placeholder="Ex. 1 Main St, New York, NY" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="p-2 col-4 bd-highlight">
+                      <mat-form-field style = "width:100%">
+                        <mat-label>City</mat-label>
+                        <input matInput formControlName="city" placeholder="Ex. 1 Main St, New York, NY" required>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="p-2 col-4 bd-highlight" style="height:40%">
+                          <ng-select  [items]="stateList"
+                                      bindLabel="stateName"
+                                      class="custom"
+                                      bindValue="stateId"
+                                      formControlName="stateId"
+                                      autofocus
+                                      appendTo="body"
+                                      placeholder="State">
+                          </ng-select>
+                    </div>
+                    <div class="p-2 col-4 bd-highlight">
+                      <mat-form-field style = "width:100%">
+                        <mat-label>Distict</mat-label>
+                        <input matInput formControlName="district" placeholder="Ex. 1 Main St, New York, NY" required>
+                      </mat-form-field>
+                  </div>
+                    <div class="p-2 col-4 bd-highlight">
+                      <mat-form-field style = "width:100%">
+                        <mat-label>Pin</mat-label>
+                        <input matInput formControlName="pin" placeholder="700120" required>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div style="vertical-align:bottom;">
+                  <button pButton matStepperPrevious class="p-button-success">
+                    <i class="pi pi-chevron-left" style="font-size: 1rem"></i> Prev
+                  </button>
+                  <button pButton matStepperNext class="p-button-warning">
+                    Next <i class="pi pi-chevron-right" style="font-size: 1rem"></i>
+                  </button>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step [stepControl]="studentContactFormGroup" label="Contact">
+              <form [formGroup]="studentContactFormGroup">
+                <div class="form-group">
+                  <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="p-2 col-8 bd-highlight">
+                      <mat-form-field style = "width:100%">
+                        <mat-label>Guardian Contact</mat-label>
+                        <input matInput formControlName="guardianContactNumber" placeholder="Guardian Contact" required>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="p-2 col-4 bd-highlight">
+                      <mat-form-field style = "width:100%">
+                        <mat-label>WhatsApp Number</mat-label>
+                        <input matInput formControlName="whatsappNumber" placeholder="WhatsApp Number" required>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="p-2 col-4 bd-highlight">
+                      <mat-form-field style = "width:100%">
+                        <mat-label>E-Mail</mat-label>
+                        <input matInput="email" formControlName="email" placeholder="Enter Your E-Mail" required>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <h5>Description</h5>
+                  <p-editor formControlName="description" [style]="{'height':'120px'}">
+                    <ng-template pTemplate="header">
+                    <span class="ql-formats">
+                        <button type="button" class="ql-bold" aria-label="Bold"></button>
+                        <button type="button" class="ql-italic" aria-label="Italic"></button>
+                        <button type="button" class="ql-underline" aria-label="Underline"></button>
+                    </span>
+                    </ng-template>
+                  </p-editor>
+
+                </div>
+
+                <div style="vertical-align:bottom;">
+                  <button pButton matStepperPrevious class="p-button-success">
+                    <i class="pi pi-chevron-left" style="font-size: 1rem"></i> Prev
+                  </button>
+                  <button pButton matStepperNext class="p-button-warning">
+                    Next <i class="pi pi-chevron-right" style="font-size: 1rem"></i>
+                  </button>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step>
+              <ng-template matStepLabel>Done</ng-template>
+              <p>You are now done.</p>
+              <div>
+                <button mat-button matStepperPrevious>
+                  <i class="pi pi-chevron-left" style="font-size: 1rem"></i>
+                </button>
+                <button mat-button (click)="stepper.reset()">
+                  <i class="bi bi-arrow-clockwise" style="font-size: 1rem"></i>
+                </button>
+
+                <button pButton [disabled]="!isValidForm()" (click)="saveStudent()"  *ngIf="!isShown">
+                  <i class="bi bi-save" style="font-size: 1rem"> Save </i>
+                </button>
+
+                <button pButton [disabled]="!isValidForm()" (click)="updateStudent()" *ngIf="isShown">
+                  <i class="bi bi-save" style="font-size: 1rem"> Update </i>
+                </button>
+              </div>
+              <div>
+                <button pButton (click)="clearStudent()">
+                  <i class="bi bi-clear" style="font-size: 1rem"> Clear </i>
+                </button>
+              </div>
+
+
+              <div  *ngIf="showErrorMessage" class="m-5">
+
+                <ngb-alert [dismissible]="false" *ngIf="errorMessage.studentName">
+                  <ul>
+                    <li *ngFor="let x of errorMessage.studentName">{{x}}</li>
+                  </ul>
+                </ngb-alert>
+
+                <ngb-alert [dismissible]="false" *ngIf="errorMessage.dob">
+                  <ul>
+                    <li *ngFor="let x of errorMessage.dob">{{x}}</li>
+                  </ul>
+                </ngb-alert>
+
+
+                <ngb-alert [dismissible]="false" *ngIf="errorMessage.guardianName">
+                  <ul>
+                    <li *ngFor="let x of errorMessage.guardianName">{{x}}</li>
+                  </ul>
+                </ngb-alert>
+
+                <ngb-alert [dismissible]="false" *ngIf="errorMessage.fatherName">
+                  <ul>
+                    <li *ngFor="let x of errorMessage.fatherName">{{x}}</li>
+                  </ul>
+                </ngb-alert>
+
+                <ngb-alert [dismissible]="false" *ngIf="errorMessage.motherName">
+                  <ul>
+                    <li *ngFor="let x of errorMessage.motherName">{{x}}</li>
+                  </ul>
+                </ngb-alert>
+
+                <ngb-alert [dismissible]="false" *ngIf="errorMessage.email">
+                  <ul>
+                    <li *ngFor="let x of errorMessage.email"><i class="bi bi-envelope-fill"></i> {{x}}</li>
+                  </ul>
+                </ngb-alert>
+
+                <ngb-alert [dismissible]="false" *ngIf="errorMessage.sex">
+                  <ul>
+                    <li *ngFor="let x of errorMessage.sex">{{x}}</li>
+                  </ul>
+                </ngb-alert>
+              </div>
+            </mat-step>
+
+          </mat-stepper>
+          <!--          End of Stepper-->
+
+        </div>
+
+        <p-confirmDialog #cd [style]="{width: '30vw'}" header="Confirmation" icon="pi pi-exclamation-triangle" [transitionOptions]="'0.8ms'">
+          <ng-template pTemplate="header">
+            <h3>Header Content</h3>
+          </ng-template>
+          <ng-template pTemplate="footer">
+            <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+            <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+          </ng-template>
+        </p-confirmDialog>
+
+<!--        <button (click)="confirm()" pButton icon="pi pi-check" label="Confirm"></button>-->
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <!--  Right-->
+  <div class="p-2 bd-highlight">
+
+    <div class="card">
+      <div class="card-header">
+
+
+        <div class="d-flex bd-highlight mb-3">
+          <div class="p-2 bd-highlight">
+            <p-button type="button" (click)="visibleSidebar2 = true" icon="pi pi-arrow-left"></p-button>
+          </div>
+          <div class="p-2 bd-highlight">
+            <h3 style="color: #1e293b;">Student Details</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+
+
+        <h5>Student List</h5>
+        <p-table #dt1 [value]="students" dataKey="studentId" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" responsiveLayout="scroll"
+                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,25,50]"
+                 styleClass="p-datatable-gridlines"
+                 [globalFilterFields]="['studentId','episodeId','studentName','motherName']">
+          <ng-template pTemplate="caption">
+<!--            <div class="p-d-flex">-->
+<!--                <span class="p-input-icon-left">-->
+<!--                  <i class="pi pi-search"></i>-->
+<!--                  <input type="text" pInputText placeholder="Search" (input)="dt1.filterGlobal(getEventValue($event), 'contains')" />-->
+<!--                </span>-->
+<!--            </div>-->
+
+            <div class="col-12 md:col-6">
+              <div class="p-inputgroup">
+                <button type="button" pButton pRipple>
+                  <i class="pi pi-search"></i>
+                </button>
+                <input type="text" pInputText placeholder="Search" (input)="dt1.filterGlobal(getEventValue($event), 'contains')">
+              </div>
+            </div>
+
+
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th>ID</th>
+              <th pSortableColumn="episodeId">Ep. ID <p-sortIcon field="episodeId"></p-sortIcon></th>
+              <th pSortableColumn="studentName">Name <p-sortIcon field="studentName"></p-sortIcon></th>
+              <th pSortableColumn="motherName">Mother <p-sortIcon field="motherName"></p-sortIcon></th>
+              <th pSortableColumn="edit">Edit <p-sortIcon field="edit"></p-sortIcon></th>
+              <th pSortableColumn="delete">Delete <p-sortIcon field="delete"></p-sortIcon></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-student>
+            <tr>
+              <td>{{student.studentId}}</td>
+              <td>{{student.episodeId}}</td>
+              <td>{{student.studentName}}</td>
+              <td>{{student.motherName}}</td>
+              <td>
+                <p-button type="button" (click)="editStudent(student)" icon="pi pi-pencil" styleClass="p-button-text"></p-button>
+              </td>
+              <td>
+                <p-button type="button" (click)="deleteStudent(student)" icon="pi pi-trash" styleClass="p-button-text"></p-button>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text" ></p-button>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+
+    <p-sidebar [(visible)]="visibleSidebar2" position="right" [baseZIndex]="20000">
+      <h1 style="font-weight:normal">Right Sidebar</h1>
+      <p-button type="button" (click)="visibleSidebar2 = false" label="Save" styleClass="p-button-success"></p-button>
+      <p-button type="button" (click)="visibleSidebar2 = false" label="Cancel" styleClass="p-button-secondary"></p-button>
+
+
+
+    </p-sidebar>
+
+  </div>
+</div>
+
+<!--To enable developer div in development-->
+<div fxLayout.xs="column" fxLayout="row" fxLayoutAlign="space-between stretch"  *ngIf="!isProduction">
+   <p-toggleButton [(ngModel)]="showDeveloperDiv" onLabel="Dont Show Developer Area" offLabel="Show Developer Area" onIcon="pi pi-times" offIcon="pi pi-check" [style]="{'width': '30em'}"></p-toggleButton>
+</div>
+
+<!--This is developer div-->
+<div class="d-flex flex-row bd-highlight mb-3" *ngIf="showDeveloperDiv && !isProduction">
+  <div class="p-2 bd-highlight col-3" style="background-color: #555555;">
+    <pre>
+      studentNameFormGroup = {{this.studentNameFormGroup.value | json}}
+      studentData={{studentData | json}}
+
+<!--      test={{studentNameFormGroup.controls['studentName'].errors['required'] | json}}-->
+    </pre>
+    <hr>
+    <pre>
+<!--      stateList={{stateList |json}}-->
+    </pre>
+    <hr>
+    <pre>
+      this.studentNameFormGroup.valid = {{this.studentNameFormGroup.valid }}
+      this.studentGuardianFormGroup.valid ={{this.studentGuardianFormGroup.valid}}
+      this.studentBasicFormGroup.valid ={{this.studentBasicFormGroup.valid}}
+      this.studentAddressFormGroup.valid ={{this.studentAddressFormGroup.valid}}
+      this.studentContactFormGroup.valid={{this.studentContactFormGroup.valid}}
+    </pre>
+    <hr>
+    <div *ngIf="studentNameFormGroup.controls['studentName'].errors && studentNameFormGroup.controls['studentName'].errors['required']">
+      <pre >
+        test={{studentNameFormGroup.controls['studentName'].errors | json}}
+      </pre>
+    </div>
+  </div>
+  <div class="p-2 bd-highlight col-3" style="background-color: #6d6c6c;">
+    <pre>
+      students={{students | json}}
+    </pre>
+    <pre>
+      studentGuardianFormGroup = {{studentGuardianFormGroup.value | json}};
+    </pre>
+  </div>
+  <div class="p-2 bd-highlight col-3" style="background-color: #848383;">
+    <pre>
+      studentBasicFormGroup = {{studentBasicFormGroup.value | json}}
+    </pre>
+  </div>
+
+  <div class="p-2 bd-highlight col-3" style="background-color: #a3a0a0;">
+    <pre>
+      studentAddressFormGroup = {{studentAddressFormGroup.value | json}}
+    </pre>
+  </div>
+  <div class="p-2 bd-highlight col-3" style="background-color: #a3a0a0;">
+    <pre>
+      studentContactFormGroup = {{studentContactFormGroup.value | json}}
+    </pre>
+  </div>
+  <div class="p-2 bd-highlight col-3" style="background-color: #a3a0a0;">
+    <pre>
+      Error Message = {{errorMessage | json}}
+    </pre>
+  </div>
+</div>
+
+

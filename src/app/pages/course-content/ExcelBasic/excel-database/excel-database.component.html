@@ -1,0 +1,294 @@
+<p-toast position="top-center" key="myKey1" (onClose)="onReject()" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div style="text-align: center">
+            <!-- <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i> -->
+            <h3>{{message.summary}}</h3>
+            <p>{{message.detail}}</p>
+        </div>
+        <!-- <div class="ui-g ui-fluid"> -->
+        <!-- <div class="ui-g-6"> -->
+        <!-- <button type="button" pButton (click)="onReject()" label="Close" class="ui-button-secondary"></button> -->
+        <!-- </div> -->
+        <!-- </div> -->
+    </ng-template>
+</p-toast>
+
+
+
+<div data-aos="fade-right">
+    <p-accordion (onOpen)="onTabOpen($event)">
+        <p-accordionTab>
+            <ng-template pTemplate="header">
+                <div style="color: #3804a0;">DGET Function</div>
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="accordion-body">
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Summary</h2>
+                        </div>
+                    </p-divider>
+                    <p>
+                        The Excel DGET function gets a single value in a given field from a record that matches
+                        criteria. DGET will throw the #NUM error if more than one record matches criteria.
+
+                    </p>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Purpose</h2>
+                        </div>
+                    </p-divider>
+                    <p>Get value from matching record</p>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Return value </h2>
+                        </div>
+                    </p-divider>
+                    <p>The value in a given field</p>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Syntax</h2>
+                        </div>
+                    </p-divider>
+
+                    <h3 class="function-prototype">
+                        =
+                        <span class="function-name">DGET</span>
+                        <span class="bracket">(</span>
+                        <span class="required-parameter" pTooltip="Put a date you want" tooltipPosition="bottom">database</span>,
+                        <span class="required-parameter" pTooltip="Put a date you want" tooltipPosition="bottom">field</span>,
+                        <span class="required-parameter" pTooltip="Put a date you want" tooltipPosition="bottom">criteria</span>
+
+                        <span class="bracket">)</span>
+                    </h3>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Arguments</h2>
+                        </div>
+                    </p-divider>
+                    <dl>
+                        <dt>database  </dt>
+                        <dd>- Database range including headers.</dd>
+                        <dt>field  </dt>
+                        <dd>- Field name or index to count.</dd>
+                        <dt>criteria   </dt>
+                        <dd>- Criteria range including headers.</dd>
+            
+                      </dl>
+
+                      <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Examples</h2>
+                        </div>
+                    </p-divider>
+                    <p><a target="_blank" href="https://docs.google.com/spreadsheets/d/1cI1WqLZ9XMw-Su3r9MeoN2XR-X3qGqQhXlR0HGJgorQ/edit?usp=sharing">example_sheet</a></p>
+                    
+                </div>
+            </ng-template>
+        </p-accordionTab>
+        <p-accordionTab>
+            <ng-template pTemplate="header">
+                <div style="color: #3804a0;">DSUM Function</div>
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="accordion-body">
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Summary</h2>
+                        </div>
+                    </p-divider>
+                    <p>
+                        The Excel DSUM function returns the sum of values from a set of records that match criteria. The values to sum are extracted from a given field in the database.
+
+                    </p>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Purpose</h2>
+                        </div>
+                    </p-divider>
+                    <p>Get sum from matching records</p>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Return value </h2>
+                        </div>
+                    </p-divider>
+                    <p>The calculated sum</p>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Syntax</h2>
+                        </div>
+                    </p-divider>
+
+                    <h3 class="function-prototype">
+                        =
+                        <span class="function-name">DSUM</span>
+                        <span class="bracket">(</span>
+                        <span class="required-parameter" pTooltip="Put a date you want" tooltipPosition="bottom">database</span>,
+                        <span class="required-parameter" pTooltip="Put a date you want" tooltipPosition="bottom">field</span>,
+                        <span class="required-parameter" pTooltip="Put a date you want" tooltipPosition="bottom">criteria</span>
+
+                        <span class="bracket">)</span>
+                    </h3>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Arguments</h2>
+                        </div>
+                    </p-divider>
+                    <dl>
+                        <dt>database  </dt>
+                        <dd>- Database range including headers.</dd>
+                        <dt>field  </dt>
+                        <dd>- Field name or index to count.</dd>
+                        <dt>criteria   </dt>
+                        <dd>- Criteria range including headers.</dd>
+            
+                      </dl>
+
+                      <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Examples</h2>
+                        </div>
+                    </p-divider>
+                    <p><a target="_blank" href="https://docs.google.com/spreadsheets/d/1cI1WqLZ9XMw-Su3r9MeoN2XR-X3qGqQhXlR0HGJgorQ/edit?usp=sharing">example_sheet</a></p>
+                    
+                </div>
+            </ng-template>
+        </p-accordionTab>
+        <p-accordionTab>
+            <ng-template pTemplate="header">
+                <div style="color: #3804a0;">DAVERAGE Function</div>
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="accordion-body">
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Summary</h2>
+                        </div>
+                    </p-divider>
+                    <p>
+                        The Excel DAVERAGE function returns the average in a given field for records that match criteria.
+
+                    </p>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Purpose</h2>
+                        </div>
+                    </p-divider>
+                    <p>Get average from matching records</p>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Return value </h2>
+                        </div>
+                    </p-divider>
+                    <p>The average value in a given field</p>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Syntax</h2>
+                        </div>
+                    </p-divider>
+
+                    <h3 class="function-prototype">
+                        =
+                        <span class="function-name">DAVERAGE </span>
+                        <span class="bracket">(</span>
+                        <span class="required-parameter" pTooltip="Put a date you want" tooltipPosition="bottom">database</span>,
+                        <span class="required-parameter" pTooltip="Put a date you want" tooltipPosition="bottom">field</span>,
+                        <span class="required-parameter" pTooltip="Put a date you want" tooltipPosition="bottom">criteria</span>
+
+                        <span class="bracket">)</span>
+                    </h3>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Arguments</h2>
+                        </div>
+                    </p-divider>
+                    <dl>
+                        <dt>database  </dt>
+                        <dd>- Database range including headers.</dd>
+                        <dt>field  </dt>
+                        <dd>- Field name or index to count.</dd>
+                        <dt>criteria   </dt>
+                        <dd>- Criteria range including headers.</dd>
+            
+                      </dl>
+
+                      <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Examples</h2>
+                        </div>
+                    </p-divider>
+                    <p><a target="_blank" href="https://docs.google.com/spreadsheets/d/1cI1WqLZ9XMw-Su3r9MeoN2XR-X3qGqQhXlR0HGJgorQ/edit?usp=sharing">example_sheet</a></p>
+                    
+                </div>
+            </ng-template>
+        </p-accordionTab>
+        <p-accordionTab>
+            <ng-template pTemplate="header">
+                <div style="color: #3804a0;">DCOUNT  Function</div>
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="accordion-body">
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Summary</h2>
+                        </div>
+                    </p-divider>
+                    <p>
+                        The Excel DCOUNT function counts matching records in a database using criteria and an optional field. When a field is provided DCOUNT will only count numeric values in the field. Use DCOUNTA to count numbers or text values in a given field.
+
+                    </p>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Purpose</h2>
+                        </div>
+                    </p-divider>
+                    <p>Count matching records in a database</p>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Return value </h2>
+                        </div>
+                    </p-divider>
+                    <p>Numeric count of matching records</p>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Syntax</h2>
+                        </div>
+                    </p-divider>
+
+                    <h3 class="function-prototype">
+                        =
+                        <span class="function-name">DCOUNT  </span>
+                        <span class="bracket">(</span>
+                        <span class="required-parameter" pTooltip="Put a date you want" tooltipPosition="bottom">database</span>,
+                        [field],
+                        <span class="required-parameter" pTooltip="Put a date you want" tooltipPosition="bottom">criteria</span>
+
+                        <span class="bracket">)</span>
+                    </h3>
+                    <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Arguments</h2>
+                        </div>
+                    </p-divider>
+                    <dl>
+                        <dt>database  </dt>
+                        <dd>- Database range including headers.</dd>
+                        <dt>field  </dt>
+                        <dd>- [optional] Field name or index to count.</dd>
+                        <dt>criteria   </dt>
+                        <dd>- Criteria range including headers.</dd>
+            
+                      </dl>
+
+                      <p-divider align="left">
+                        <div class="inline-flex align-items-center">
+                            <h2>Examples</h2>
+                        </div>
+                    </p-divider>
+                    <p><a target="_blank" href="https://docs.google.com/spreadsheets/d/1cI1WqLZ9XMw-Su3r9MeoN2XR-X3qGqQhXlR0HGJgorQ/edit?usp=sharing">example_sheet</a></p>
+                    
+                </div>
+            </ng-template>
+        </p-accordionTab>
+    </p-accordion>
+</div>
